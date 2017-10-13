@@ -74,7 +74,7 @@ def remove_cluster(m,n):
 
 
 xs,ys=[[],[]]
-for fil in range(1,100):
+for fil in range(1,5000):
 	if fil%10==0:
 		print(fil)
 	arr = misc.imread("test/"+str(fil))
