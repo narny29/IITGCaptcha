@@ -3,6 +3,8 @@ from scipy import ndimage
 from PIL import Image
 import numpy
 import matplotlib.pyplot as plt
+from matplotlib import style
+from sklearn.cluster import kMeans
 #65*252
 
 xs,ys=[[],[]]
