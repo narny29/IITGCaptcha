@@ -4,14 +4,14 @@ from PIL import Image
 import numpy
 import matplotlib.pyplot as plt
 from matplotlib import style
-from sklearn.cluster import kMeans
+from sklearn.cluster import KMeans
 #65*252
 
 xs,ys=[[],[]]
 pic=1
 outp_dir="b_w/letters/"
 digit_index="oABCDE"
-for fil in range(1,50):
+for fil in range(1,100):
 	if fil%10==0:
 		print(fil)
 	new = misc.imread("b_w/"+str(fil))
@@ -37,10 +37,15 @@ for fil in range(1,50):
 		for j in range(next-7,next+15):
 			arr.append([tot[j],j])
 		limit=min(arr)
+		for j in range(next-7,next+15):
+			if tot[j]==limit[0]:
+				if limit[1]<j:
+					limit[1]=j
 		digit=img.crop((prev,0,limit[1],64))
 		digit=digit.resize((30,30),Image.ANTIALIAS)
 		digit.save(outp_dir+str(fil)+digit_index[i]+'.png')
 		prev=limit[1]
+		diff=(end-prev)//(5-i)
 	digit=img.crop((prev,0,end,64))
 	digit=digit.resize((30,30),Image.ANTIALIAS)
 	digit.save(outp_dir+str(fil)+digit_index[i+1]+'.png')
