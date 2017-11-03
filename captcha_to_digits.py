@@ -34,13 +34,9 @@ for fil in range(1,100):
 	for i in range(1,5):
 		next=prev+diff
 		arr=[]
-		for j in range(next-7,next+15):
+		for j in range(next-5,next+17):
 			arr.append([tot[j],j])
 		limit=min(arr)
-		for j in range(next-7,next+15):
-			if tot[j]==limit[0]:
-				if limit[1]<j:
-					limit[1]=j
 		digit=img.crop((prev,0,limit[1],64))
 		digit=digit.resize((30,30),Image.ANTIALIAS)
 		digit.save(outp_dir+str(fil)+digit_index[i]+'.png')
